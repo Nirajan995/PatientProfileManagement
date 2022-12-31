@@ -1,0 +1,11 @@
+export const IS_EMAIL_VALIDATOR = "Please enter a valid email";
+export const PASSWORD_REQUIRED_VALIDATOR = "Password is required to authenticate";
+export const EMAIL_REQUIRED_VALIDATOR = "Email is required to authenticate";
+export const PASSWORD_MINLENGTH_VALIDATOR = "Minimum password length is 8 characters";
+export const PASSWORD_REGEX_VALIDATION = /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+export const PASSWORD_REGEX_VALIDATOR = "Password must contain minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character";
+export const UNIQUE_EMAIL_VALIDATOR = "The email is already registered";
+export const USER_VALIDATION_FAILED = "User validation failed";
+export const EMAIL_PASSWORD_VALIDATOR = "Incorrect email or password";
+export const FULLNAME_REQUIRED_VALIDATOR = "Fullname is required to signup";
+export const FULLNAME_MINLENGTH_VALIDATOR = "Full Name should be at least 6 characters long";
