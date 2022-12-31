@@ -8,8 +8,22 @@ class PatientService {
       return axios.get(Patient_Api_Base_URL + '/patient', { headers: authHeader() });
    }
 
+   getPatientById(id) {
+      return axios.get(Patient_Api_Base_URL + `/patient/${id}`, { headers: authHeader() });
+   }
+
    deletePatient(id) {
       return axios.delete(Patient_Api_Base_URL + `/patient/${id}`, { headers: authHeader() });
+   }
+
+   addPatient(data) {
+      return axios.post(Patient_Api_Base_URL + `/patient`, data,
+         { headers: authHeader(), "Content-Type": "multipart/form-data" });
+   }
+
+   updatePatient(data) {
+      return axios.put(Patient_Api_Base_URL + `/patient`, data,
+         { headers: authHeader(), "Content-Type": "multipart/form-data" });
    }
 }
 

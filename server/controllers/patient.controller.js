@@ -67,3 +67,17 @@ export const updatePatient = async (req, res) => {
          .json(Formatter.error(ProductsError.ProductUpdateError.message, error));
    }
 };
+
+export const getPatientById = async (req, res) => {
+   const { id } = req.params;
+   const { user } = req;
+   try {
+
+   } catch (error) {
+      res
+         .status(400)
+         .json(
+            Formatter.error(ProductsError.ProductFetchByIdError.message, error),
+         );
+   }
+};

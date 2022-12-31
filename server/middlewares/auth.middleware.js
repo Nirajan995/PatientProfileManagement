@@ -3,12 +3,7 @@ import User from "../models/user.model.js";
 import { Formatter, Error } from "../services/response.formatter.js";
 
 const auth = (req, res, next) => {
-   if (req.method === 'GET' && !req.headers.authorization) {
-      req.user = {
-         _id: '',
-      };
-      next();
-   } else if (!req.headers.authorization) {
+   if (!req.headers.authorization) {
       return res.status(401).json(Formatter.error(Error.AuthorizationError.message, null));
    } else {
       const token = req.headers.authorization.split(" ")[1];
