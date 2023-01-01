@@ -28,7 +28,6 @@ const AddPatient = () => {
       data.append("email", email);
       data.append("contact", contact);
       data.append("address", address);
-      console.log(specialAttention)
       data.append("specialAttention", specialAttention);
 
       patientService.addPatient(data).then((response) => {

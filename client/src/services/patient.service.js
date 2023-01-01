@@ -21,8 +21,8 @@ class PatientService {
          { headers: authHeader(), "Content-Type": "multipart/form-data" });
    }
 
-   updatePatient(data) {
-      return axios.put(Patient_Api_Base_URL + `/patient`, data,
+   updatePatient(data, id) {
+      return axios.put(Patient_Api_Base_URL + `/patient/${id}`, data,
          { headers: authHeader(), "Content-Type": "multipart/form-data" });
    }
 }

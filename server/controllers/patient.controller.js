@@ -1,16 +1,27 @@
 import Patient from "../models/patient.model.js";
 import cloudinary from "../config/cloudinary.js";
+import sharp from "sharp";
+import fs from "fs";
+import path from "path";
 import { Error, Formatter, Success } from "../services/response.formatter.js";
 
 export const addPatient = async (req, res) => {
    const { body, file } = req;
    try {
-      let picture_url = await cloudinary.v2.uploader.upload(file.path);
+      console.log(file)
+      await sharp(file.path)
+         .resize(200, 200)
+         .toFormat("jpeg")
+         .jpeg({ quality: 90 })
+         .toFile(`public/resized/${file.filename}`);
+      await fs.unlinkSync(file.path);
+      let picture_url = await cloudinary.v2.uploader.upload(`public/resized/${file.filename}`);
       body.imageURL = picture_url.secure_url;
 
       const response = await Patient.create(body);
       res.status(200).json(Formatter.success(Success.AddPatientSuccess.message, response))
    } catch (error) {
+      console.log(error)
       res
          .status(400)
          .json(Formatter.error(Error.AddPatientFailure.message, error));
