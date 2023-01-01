@@ -42,6 +42,16 @@ export const removePatient = async (req, res) => {
    try {
       const { id } = req.params;
 
+      const pat = await Patient.findOne({ _id: id });
+
+      if (!pat) {
+         return res
+            .status(404)
+            .json(
+               Formatter.error(Error.PatientNotFound.message, null),
+            );
+      }
+
       const patient = await Patient.findOneAndDelete({ _id: id });
       cloudinary.v2.uploader.destroy(getPublicId(patient.imageURL), function (error, result) {
          if (error) {
@@ -75,6 +85,14 @@ export const updatePatient = async (req, res) => {
 
       const patient = await Patient.findOne({ _id: id });
 
+      if (!patient) {
+         return res
+            .status(404)
+            .json(
+               Formatter.error(Error.PatientNotFound.message, null),
+            );
+      }
+
       cloudinary.v2.uploader.destroy(getPublicId(patient.imageURL), async function (error, result) {
          if (error) {
             return res
@@ -102,6 +120,13 @@ export const getPatientById = async (req, res) => {
    const { id } = req.params;
    try {
       const patient = await Patient.findOne({ _id: id });
+      if (!patient) {
+         return res
+            .status(404)
+            .json(
+               Formatter.error(Error.PatientNotFound.message, null),
+            );
+      }
       res.status(200).json(Formatter.success(Success.PatientFetchByIdSuccess.message, patient));
    } catch (error) {
       res

@@ -71,6 +71,10 @@ export const Error = {
       name: "PatientFetchByIdError",
       message: "Failed to fetch patient.",
    },
+   PatientNotFound: {
+      name: "PatientNotFound",
+      message: "No patient found with similar id.",
+   },
 };
 
 export const Success = {
