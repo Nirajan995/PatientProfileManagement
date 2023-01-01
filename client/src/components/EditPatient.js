@@ -36,7 +36,7 @@ const EditPatient = () => {
       data.append("contact", contact);
       data.append("address", address);
 
-      patientService.addPatient(data).then((response) => {
+      patientService.updatePatient(data).then((response) => {
          if (response.data.status) {
             navigate('/patients');
          }
@@ -48,6 +48,7 @@ const EditPatient = () => {
    return (
       <>
          <NavBar />
+         <h3>Edit Patient</h3>
          <Form style={{ margin: '4rem' }} onSubmit={updateHandler}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                <Form.Label>Full Name</Form.Label>

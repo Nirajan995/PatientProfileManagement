@@ -12,8 +12,10 @@ const Patient = () => {
   const navigate = useNavigate();
   useEffect(() => {
     PatientService.getPatients()
-      .then(({ data }) => {
-        setPatients(data);
+      .then((response) => {
+        if (response.data.status) {
+          setPatients(response.data.data);
+        }
       })
       .catch((err) => {
         navigate('/');
@@ -40,11 +42,11 @@ const Patient = () => {
     <>
       <NavBar />
       <Row>
-        {patients.map((patient) => (
+        {patients.length > 0 ? (patients.map((patient) => (
           <Col key={patient._id} sm={12} md={6} lg={4} xl={3}>
             <PatientList patient={patient} handleDeletePatient={handleDeletePatient} handleEditPatient={handleEditPatient} />
           </Col>
-        ))}
+        ))) : <h2 style={{ margin: "auto" }}>No records found for any patient. Please add a new patient.</h2>}
       </Row>
 
     </>

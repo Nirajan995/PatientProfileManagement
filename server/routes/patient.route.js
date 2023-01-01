@@ -10,7 +10,7 @@ const router = express.Router();
 router.get("/patient", auth, getPatient);
 router.get("/patient/:id", auth, getPatientById);
 router.post("/patient", auth, upload.single("image"), addPatient);
-router.put("/patient/:id", auth, updatePatient);
+router.put("/patient/:id", auth, upload.single("image"), updatePatient);
 router.delete("/patient/:id", auth, removePatient);
 
 export default router;

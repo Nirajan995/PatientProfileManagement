@@ -20,6 +20,7 @@ const PatientList = ({ patient, handleDeletePatient, handleEditPatient }) => {
                </Link>
                <Card.Text as="h5">{patient.email}</Card.Text>
                <Card.Text as="h5">{patient.contact}</Card.Text>
+               <Card.Text as="p">{patient.specialAttention === true ? 'Requires Special Attention' : 'Doesnot require special Attention'}</Card.Text>
                <Button variant="primary" onClick={() => handleEditPatient(patient._id)}>Edit</Button>{' '}
                <Button variant="danger" onClick={() => handleDeletePatient(patient._id)}>
                   Delete

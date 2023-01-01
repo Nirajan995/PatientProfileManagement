@@ -5,7 +5,7 @@ import { config } from "dotenv";
 import indexRouter from "./routes/index.js";
 import connDB from "./config/db.js";
 
-const app = express();
+export const app = express();
 
 config();
 

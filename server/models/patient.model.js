@@ -27,6 +27,10 @@ const patientSchema = Schema(
       },
       address: {
          type: String
+      },
+      specialAttention: {
+         type: Boolean,
+         default: false
       }
    },
    { timestamps: true },

@@ -14,6 +14,7 @@ const AddPatient = () => {
    const [email, setEmail] = useState();
    const [contact, setContact] = useState();
    const [address, setAddress] = useState();
+   const [specialAttention, setSpecialAttention] = useState(false);
    const fileInputRef = useRef();
 
    const navigate = useNavigate();
@@ -27,6 +28,8 @@ const AddPatient = () => {
       data.append("email", email);
       data.append("contact", contact);
       data.append("address", address);
+      console.log(specialAttention)
+      data.append("specialAttention", specialAttention);
 
       patientService.addPatient(data).then((response) => {
          console.log(response.data);
@@ -41,6 +44,7 @@ const AddPatient = () => {
    return (
       <>
          <NavBar />
+         Add patient
          <Form style={{ margin: '4rem' }} onSubmit={submitHandler}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                <Form.Label>Full Name</Form.Label>
@@ -84,6 +88,11 @@ const AddPatient = () => {
                         setImage(null);
                      }
                   }} />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicCheckbox">
+               <Form.Check type="checkbox" label="Requires Special Attention?" onChange={(e) => {
+                  e.target.value === 'on' ? setSpecialAttention(true) : setSpecialAttention(false);
+               }} />
             </Form.Group>
             <Button variant="primary" type="submit">
                Submit
