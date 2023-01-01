@@ -8,7 +8,6 @@ import { Error, Formatter, Success } from "../services/response.formatter.js";
 export const addPatient = async (req, res) => {
    const { body, file } = req;
    try {
-      console.log(file)
       await sharp(file.path)
          .resize(200, 200)
          .toFormat("jpeg")

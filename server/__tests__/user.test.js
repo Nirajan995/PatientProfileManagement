@@ -11,9 +11,9 @@ describe("POST /signup", () => {
 
    describe("user registration", () => {
       describe("given the email and password are valid", () => {
-         it("should return the user id", async () => {
+         it("should return the status code 200", async () => {
 
-            const { status, data } = await supertest(app)
+            const { status } = await supertest(app)
                .post("/api/v1/signup")
                .send(userInput);
 
@@ -30,9 +30,9 @@ describe("POST /signin", () => {
 
    describe("user login", () => {
       describe("given the email and password are valid", () => {
-         it("should return the user jwt", async () => {
+         it("should return the status code 200", async () => {
 
-            const { status, data } = await supertest(app)
+            const { status } = await supertest(app)
                .post("/api/v1/signin")
                .send(userInput);
 

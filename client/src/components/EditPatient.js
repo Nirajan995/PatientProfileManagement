@@ -25,14 +25,11 @@ const EditPatient = () => {
       patientService.getPatientById(id)
          .then(({ data }) => {
             if (data.status) {
-               console.log(data)
                setFullName(data.data.fullName);
                setAddress(data.data.address);
                setContact(data.data.contact);
                setEmail(data.data.email);
                setSpecialAttention(data.data.specialAttention);
-               console.log(email)
-               console.log(contact)
             }
          })
          .catch((err) => {
@@ -113,7 +110,7 @@ const EditPatient = () => {
                }} />
             </Form.Group>
             <Button variant="primary" type="submit">
-               Submit
+               Update
             </Button>
          </Form>
       </>
